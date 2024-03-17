@@ -1,0 +1,60 @@
+/// name : "住民姓名"
+/// birthday : 648182825
+/// breakfast : 1 餐點數量
+/// lunch : 0 餐點數量
+/// dinner : 2 餐點數量
+
+class UserData {
+  UserData({
+      String? name, 
+      num? birthday, 
+      num? breakfast, 
+      num? lunch, 
+      num? dinner,}){
+    _name = name;
+    _birthday = birthday;
+    _breakfast = breakfast;
+    _lunch = lunch;
+    _dinner = dinner;
+}
+
+  UserData.fromJson(dynamic json) {
+    _name = json['name'];
+    _birthday = json['birthday'];
+    _breakfast = json['breakfast'];
+    _lunch = json['lunch'];
+    _dinner = json['dinner'];
+  }
+  String? _name;
+  num? _birthday;
+  num? _breakfast;
+  num? _lunch;
+  num? _dinner;
+UserData copyWith({  String? name,
+  num? birthday,
+  num? breakfast,
+  num? lunch,
+  num? dinner,
+}) => UserData(  name: name ?? _name,
+  birthday: birthday ?? _birthday,
+  breakfast: breakfast ?? _breakfast,
+  lunch: lunch ?? _lunch,
+  dinner: dinner ?? _dinner,
+);
+  String? get name => _name;
+  num? get birthday => _birthday;
+  num? get breakfast => _breakfast;
+  num? get lunch => _lunch;
+  num? get dinner => _dinner;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['name'] = _name;
+    map['birthday'] = _birthday;
+    map['breakfast'] = _breakfast;
+    map['lunch'] = _lunch;
+    map['dinner'] = _dinner;
+    return map;
+  }
+
+}
