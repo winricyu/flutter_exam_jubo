@@ -152,10 +152,9 @@ class _UserScreenState extends ConsumerState<UserScreen> {
               const Gap(16),
               Expanded(
                 child: CupertinoDatePicker(
-                  backgroundColor: Colors.blue,
                   mode: CupertinoDatePickerMode.date,
                   dateOrder: DatePickerDateOrder.ymd,
-                  initialDateTime: DateTime.now(),
+                  initialDateTime: _birthDate ?? DateTime.now(),
                   maximumDate: DateTime.now(),
                   onDateTimeChanged: (date) {
                     _birthDate = date;
