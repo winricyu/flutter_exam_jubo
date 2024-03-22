@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'features/home/presentation/home_screen.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  initializeDateFormatting('zh_TW').then((value) {
+    runApp(const ProviderScope(child: MyApp()));
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -18,8 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  MyHomePage(),
+      home: MyHomePage(),
     );
   }
 }
-

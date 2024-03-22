@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_exam_jubo/features/chart/presentation/chart_screen.dart';
+import 'package:flutter_exam_jubo/features/home/provider/navigation_index_provider.dart';
 import 'package:flutter_exam_jubo/features/meal/presentation/meal_screen.dart';
 import 'package:flutter_exam_jubo/features/user/presentation/user_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MyHomePage extends StatelessWidget {
-
+class MyHomePage extends ConsumerWidget {
   final _navItems = [
     const BottomNavigationBarItem(
         icon: Icon(Icons.people_alt_outlined), label: '住民名單'),
@@ -18,22 +19,26 @@ class MyHomePage extends StatelessWidget {
     const ChartScreen(),
   ];
 
-  var _currentIndex = 0;
-
-
+  MyHomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentIndex = ref.watch(navigationIndexProvider);
     return Scaffold(
-      body: _screens[_currentIndex],
+      body: SafeArea(
+        child: IndexedStack(
+          index: currentIndex,
+          children: _screens,
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.purple,
         unselectedItemColor: Colors.grey,
         items: _navItems,
         onTap: (index) {
-            _currentIndex = index;
+          ref.read(navigationIndexProvider.notifier).changeIndex(index);
         },
       ),
     );
