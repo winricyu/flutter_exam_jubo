@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_exam_jubo/features/user/data/user.dart';
 import 'package:flutter_exam_jubo/utils/datetime_extension.dart';
 import 'package:gap/gap.dart';
@@ -65,22 +67,11 @@ class _UserTileState extends State<UserTile> {
         clipBehavior: Clip.hardEdge,
         child: Row(
           children: [
-            Stack(children: [
-              Container(
-                color: Colors.orange,
-                padding: const EdgeInsets.all(16),
-                child: const Icon(Icons.person),
-              ),
-              Positioned(
-                right: 2,
-                bottom: 0,
-                child: Text(
-                  '[${widget.user.id}]',
-                  style: Theme.of(context).textTheme.bodySmall,
-                  maxLines: 1,
-                ),
-              ),
-            ]),
+            Container(
+              color: Colors.orange,
+              padding: const EdgeInsets.all(16),
+              child: const Icon(Icons.person),
+            ),
             const Gap(8),
             Expanded(
               child: userBasicInfo(widget.user),
@@ -180,6 +171,7 @@ class _UserTileState extends State<UserTile> {
               : Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: Row(
+                    mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -187,10 +179,13 @@ class _UserTileState extends State<UserTile> {
                         style: Theme.of(context).textTheme.bodySmall,
                         maxLines: 1,
                       ),
-                      Text(
-                        '年齡:${user.birthDate.calculateAge}',
-                        style: Theme.of(context).textTheme.bodySmall,
-                        maxLines: 1,
+                      SizedBox(
+                        width: 50,
+                        child: Text(
+                          '年齡:${user.birthDate.calculateAge}',
+                          style: Theme.of(context).textTheme.bodySmall,
+                          maxLines: 1,
+                        ),
                       ),
                     ],
                   ),
