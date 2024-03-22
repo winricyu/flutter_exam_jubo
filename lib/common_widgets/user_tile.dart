@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_exam_jubo/features/user/data/user.dart';
 import 'package:flutter_exam_jubo/utils/datetime_extension.dart';
 import 'package:gap/gap.dart';
@@ -13,10 +11,6 @@ class UserTile extends StatefulWidget {
   final User user;
   final VoidCallback? onDeleteClick;
   final Function(User)? onChange;
-
-  // final String? name;
-  // final DateTime? birthday;
-  // bool breakfast, lunch, dinner;
 
   const UserTile({
     super.key,

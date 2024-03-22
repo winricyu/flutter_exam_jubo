@@ -14,27 +14,25 @@ class ChartScreen extends ConsumerWidget {
     final dinnerCounts = ref.watch(dinnerCounterProvider);
 
     return Scaffold(
+      backgroundColor: Colors.orange.shade50,
       body: SizedBox.expand(
-        child: ColoredBox(
-          color: Colors.orange.shade50,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '早餐：$breakfastCounts',
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
-              Text(
-                '午餐：$lunchCounts',
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
-              Text(
-                '晚餐：$dinnerCounts',
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
-            ],
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              '早餐：$breakfastCounts',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            Text(
+              '午餐：$lunchCounts',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            Text(
+              '晚餐：$dinnerCounts',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+          ],
         ),
       ),
     );
